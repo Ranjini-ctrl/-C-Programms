@@ -1,0 +1,37 @@
+//adam.c
+//to check the given no is adam or not
+#include<stdio.h>
+#include<conio.h>
+int reverse(int num) //a function only to reverse the given number
+{
+    int rev = 0;
+    while (num > 0)
+    {
+    rev = rev * 10 + num % 10;
+    num /= 10;
+    }
+return rev;
+}
+int isAdamNumber(int num)
+{
+    int rev, sq1, sq2, revsqr;
+    rev = reverse(num);
+    sq1 = num * num;
+    sq2 = rev * rev;
+    revsqr = reverse(sq2);
+    if (sq1 == revsqr)
+        return 0;
+    else
+        return 1;
+}
+int main()
+{
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    if (0 == isAdamNumber(num))
+        printf("%d is an Adam number\n", num);
+    else
+        printf("%d is not an Adam number\n", num);
+    return 0;
+}
